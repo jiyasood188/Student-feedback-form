@@ -1,0 +1,5 @@
+target/
+.git/
+student_feedback.db
+student_feedback.db-shm
+student_feedback.db-wal

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f5f7fb">
+    <title>Student Feedback Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="login-screen" class="login-screen">
+        <section class="login-card" aria-labelledby="login-title">
+            <a class="brand brand-login" href="#" aria-label="Campus Voice home">
+                <span class="brand-mark">C</span>
+                <span>Campus<span class="brand-light">Voice</span></span>
+            </a>
+            <p class="eyebrow">STUDENT PORTAL</p>
+            <h1 id="login-title">Welcome back</h1>
+            <p class="muted login-intro">Sign in to share your experience and help us make every class better.</p>
+
+            <form id="login-form" class="form-stack">
+                <label for="student-id">Student ID</label>
+                <input id="student-id" name="studentId" type="text" placeholder="e.g. STU001" autocomplete="username" required>
+
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+
+                <p id="login-error" class="form-error" role="alert" hidden>Check your student ID and password, then try again.</p>
+                <button class="button button-primary button-full" type="submit">Sign in <span aria-hidden="true">→</span></button>
+            </form>
+
+            <div class="demo-hint">
+                <span class="hint-dot" aria-hidden="true"></span>
+                Demo login: <strong>STU001</strong> / <strong>student123</strong>
+            </div>
+            <p class="demo-notice">Use your student account to access the feedback portal.</p>
+        </section>
+        <aside class="login-aside" aria-label="Portal introduction">
+            <div class="aside-orb orb-one"></div>
+            <div class="aside-orb orb-two"></div>
+            <div class="aside-content">
+                <span class="aside-kicker">YOUR VOICE MATTERS</span>
+                <h2>Better learning<br>starts with listening.</h2>
+                <p>Thoughtful feedback helps build a stronger classroom for everyone.</p>
+                <div class="aside-stat">
+                    <span class="stat-icon" aria-hidden="true">✦</span>
+                    <span><strong>One community.</strong><br>Many ways to grow.</span>
+                </div>
+            </div>
+            <span class="aside-footer">A brighter campus, together.</span>
+        </aside>
+    </main>
+
+    <div id="app-shell" class="app-shell" hidden>
+        <aside id="sidebar" class="sidebar">
+            <a class="brand sidebar-brand" href="#" data-view-link="dashboard" aria-label="Campus Voice dashboard">
+                <span class="brand-mark">C</span>
+                <span>Campus<span class="brand-light">Voice</span></span>
+            </a>
+
+            <div class="sidebar-label">WORKSPACE</div>
+            <nav class="side-nav" aria-label="Main navigation">
+                <button class="nav-link active" type="button" data-view="dashboard">
+                    <span class="nav-icon" aria-hidden="true">⌂</span><span>Dashboard</span>
+                </button>
+                <button class="nav-link" type="button" data-view="feedback">
+                    <span class="nav-icon" aria-hidden="true">＋</span><span>Submit feedback</span>
+                </button>
+                <button class="nav-link" type="button" data-view="summary">
+                    <span class="nav-icon" aria-hidden="true">▤</span><span>Feedback summary</span>
+                </button>
+                <button class="nav-link" type="button" data-view="reports">
+                    <span class="nav-icon" aria-hidden="true">▧</span><span>Feedback reports</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <div class="sidebar-note">
+                    <span class="note-icon" aria-hidden="true">✦</span>
+                    <strong>Your feedback matters</strong>
+                    <p>Every response helps improve learning.</p>
+                </div>
+                <button id="logout-button" class="logout-button" type="button">
+                    <span class="nav-icon" aria-hidden="true">↪</span><span>Sign out</span>
+                </button>
+            </div>
+        </aside>
+
+        <div class="main-column">
+            <header class="topbar">
+                <button id="menu-button" class="menu-button" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+                <div class="breadcrumb"><span>Workspace</span><span class="breadcrumb-slash">/</span><strong id="current-section">Dashboard</strong></div>
+                <div class="topbar-right">
+                    <span class="term-pill"><span class="status-dot"></span> Academic year 2025–26</span>
+                    <div class="user-chip">
+                        <span class="avatar" id="user-avatar">A</span>
+                        <span class="user-name"><strong id="user-name">Aarav Patel</strong><small>Student</small></span>
+                    </div>
+                </div>
+            </header>
+
+            <main class="page-content">
+                <p id="app-error" class="form-error app-error" role="alert" hidden></p>
+                <section id="view-dashboard" class="view-section">
+                    <div class="page-heading heading-with-action">
+                        <div>
+                            <p class="eyebrow">STUDENT OVERVIEW</p>
+                            <h1>Good morning, <span id="greeting-name">Aarav</span> <span class="wave" aria-hidden="true">✦</span></h1>
+                            <p class="muted">Your perspective helps make our classrooms better.</p>
+                        </div>
+                        <button class="button button-primary" type="button" data-go="feedback"><span aria-hidden="true">＋</span> Give feedback</button>
+                    </div>
+
+                    <div class="stats-grid">
+                        <article class="stat-card">
+                            <div class="stat-card-top"><span class="stat-label">FEEDBACK SUBMITTED</span><span class="stat-card-icon icon-blue">▤</span></div>
+                            <div class="stat-value" id="stat-submissions">0</div>
+                            <p class="stat-caption">Your contributions this term</p>
+                        </article>
+                        <article class="stat-card">
+                            <div class="stat-card-top"><span class="stat-label">FACULTY REVIEWED</span><span class="stat-card-icon icon-purple">♙</span></div>
+                            <div class="stat-value" id="stat-faculty">0</div>
+                            <p class="stat-caption">Faculty you have shared feedback for</p>
+                        </article>
+                        <article class="stat-card">
+                            <div class="stat-card-top"><span class="stat-label">CAMPUS RATING</span><span class="stat-card-icon icon-amber">★</span></div>
+                            <div class="stat-value"><span id="stat-rating">—</span><span class="rating-out-of"> / 5</span></div>
+                            <p class="stat-caption">Average across your submitted ratings</p>
+                        </article>
+                    </div>
+
+                    <div class="content-grid">
+                        <section class="panel activity-panel">
+                            <div class="panel-heading">
+                                <div><h2>Recent feedback</h2><p class="muted">Your latest submissions</p></div>
+                                <button class="text-button" type="button" data-go="reports">View all <span aria-hidden="true">→</span></button>
+                            </div>
+                            <div class="table-wrap">
+                                <table>
+                                    <thead><tr><th>FACULTY</th><th>SUBMITTED</th><th>RATING</th><th>STATUS</th></tr></thead>
+                                    <tbody id="recent-feedback-body"></tbody>
+                                </table>
+                            </div>
+                        </section>
+                        <section class="panel prompt-panel">
+                            <div class="prompt-art" aria-hidden="true"><span>✦</span></div>
+                            <p class="eyebrow">MAKE AN IMPACT</p>
+                            <h2>Have a class in mind?</h2>
+                            <p class="muted">A few thoughtful minutes can make a real difference to your learning community.</p>
+                            <button class="button button-outline" type="button" data-go="feedback">Share your thoughts <span aria-hidden="true">→</span></button>
+                        </section>
+                    </div>
+                </section>
+
+                <section id="view-feedback" class="view-section" hidden>
+                    <div class="page-heading">
+                        <p class="eyebrow">YOUR VOICE MATTERS</p>
+                        <h1>Submit feedback</h1>
+                        <p class="muted">Share a thoughtful review of your learning experience.</p>
+                    </div>
+                    <div class="form-layout">
+                        <form id="feedback-form" class="panel feedback-form">
+                            <div class="form-section-title"><span class="step-number">1</span><div><h2>Choose a faculty member</h2><p class="muted">Select the class you would like to review.</p></div></div>
+                            <label for="faculty-select">Faculty member <span class="required">*</span></label>
+                            <select id="faculty-select" name="faculty" required>
+                                <option value="">Select a faculty member</option>
+                            </select>
+
+                            <div class="form-divider"></div>
+                            <div class="form-section-title"><span class="step-number">2</span><div><h2>Rate your experience</h2><p class="muted">Choose a rating from 1 (needs improvement) to 5 (excellent).</p></div></div>
+                            <div class="rating-fields">
+                                <label for="teaching-rating">Teaching quality</label>
+                                <select id="teaching-rating" name="teaching" required>
+                                    <option value="5">5 — Excellent</option><option value="4">4 — Very good</option><option value="3">3 — Good</option><option value="2">2 — Fair</option><option value="1">1 — Needs improvement</option>
+                                </select>
+                                <label for="communication-rating">Communication</label>
+                                <select id="communication-rating" name="communication" required>
+                                    <option value="5">5 — Excellent</option><option value="4">4 — Very good</option><option value="3">3 — Good</option><option value="2">2 — Fair</option><option value="1">1 — Needs improvement</option>
+                                </select>
+                                <label for="punctuality-rating">Punctuality</label>
+                                <select id="punctuality-rating" name="punctuality" required>
+                                    <option value="5">5 — Excellent</option><option value="4">4 — Very good</option><option value="3">3 — Good</option><option value="2">2 — Fair</option><option value="1">1 — Needs improvement</option>
+                                </select>
+                            </div>
+
+                            <div class="form-divider"></div>
+                            <div class="form-section-title"><span class="step-number">3</span><div><h2>Add a comment</h2><p class="muted">Optional — constructive comments are always welcome.</p></div></div>
+                            <label for="feedback-comment">Your comments <span class="optional">(optional)</span></label>
+                            <textarea id="feedback-comment" name="comment" rows="4" maxlength="500" placeholder="What went well? What could make the class even better?"></textarea>
+                            <div class="form-footer"><span id="comment-count" class="muted">0 / 500</span><button class="button button-primary" type="submit">Submit feedback <span aria-hidden="true">→</span></button></div>
+                            <p id="feedback-success" class="success-message" role="status" hidden>Thank you! Your feedback was submitted.</p>
+                            <p id="feedback-error" class="form-error" role="alert" hidden></p>
+                        </form>
+                        <aside class="panel rating-guide">
+                            <span class="guide-icon" aria-hidden="true">✦</span>
+                            <h2>A little guidance</h2>
+                            <p class="muted">Your honest and respectful feedback helps faculty understand what supports your learning.</p>
+                            <div class="guide-scale"><span class="rating-stars">★★★★★</span><strong>5</strong><span>Excellent</span></div>
+                            <div class="guide-scale"><span class="rating-stars">★★★★<span class="star-muted">★</span></span><strong>4</strong><span>Very good</span></div>
+                            <div class="guide-scale"><span class="rating-stars">★★★<span class="star-muted">★★</span></span><strong>3</strong><span>Good</span></div>
+                            <div class="guide-scale"><span class="rating-stars">★★<span class="star-muted">★★★</span></span><strong>2</strong><span>Fair</span></div>
+                            <div class="guide-scale"><span class="rating-stars">★<span class="star-muted">★★★★</span></span><strong>1</strong><span>Needs improvement</span></div>
+                            <div class="privacy-note"><span aria-hidden="true">◉</span><p>Your feedback is used to support a better learning experience.</p></div>
+                        </aside>
+                    </div>
+                </section>
+
+                <section id="view-summary" class="view-section" hidden>
+                    <div class="page-heading heading-with-action">
+                        <div><p class="eyebrow">YOUR CONTRIBUTION</p><h1>Feedback summary</h1><p class="muted">A quick look at the feedback you have shared.</p></div>
+                        <button class="button button-primary" type="button" data-go="feedback"><span aria-hidden="true">＋</span> New feedback</button>
+                    </div>
+                    <div class="stats-grid summary-stats">
+                        <article class="stat-card"><div class="stat-card-top"><span class="stat-label">TOTAL SUBMISSIONS</span><span class="stat-card-icon icon-blue">▤</span></div><div class="stat-value" id="summary-count">0</div><p class="stat-caption">Feedback entries in the database</p></article>
+                        <article class="stat-card"><div class="stat-card-top"><span class="stat-label">FACULTY REVIEWED</span><span class="stat-card-icon icon-purple">♙</span></div><div class="stat-value" id="summary-faculty">0</div><p class="stat-caption">Faculty with submitted feedback</p></article>
+                        <article class="stat-card"><div class="stat-card-top"><span class="stat-label">AVERAGE RATING</span><span class="stat-card-icon icon-amber">★</span></div><div class="stat-value"><span id="summary-average">—</span><span class="rating-out-of"> / 5</span></div><p class="stat-caption">Across all submitted feedback</p></article>
+                    </div>
+                    <section class="panel summary-panel">
+                        <div class="panel-heading"><div><h2>Ratings by faculty</h2><p class="muted">Calculated from saved feedback</p></div><span class="live-label"><span class="status-dot"></span> DATABASE</span></div>
+                        <div class="table-wrap"><table><thead><tr><th>FACULTY</th><th>FEEDBACK COUNT</th><th>TEACHING</th><th>COMMUNICATION</th><th>PUNCTUALITY</th><th>OVERALL</th></tr></thead><tbody id="summary-body"></tbody></table></div>
+                    </section>
+                    <p class="preview-footnote">Ratings are calculated from submitted feedback stored in the database.</p>
+                </section>
+
+                <section id="view-reports" class="view-section" hidden>
+                    <div class="page-heading heading-with-action">
+                        <div><p class="eyebrow">SUBMISSION HISTORY</p><h1>Feedback reports</h1><p class="muted">Review feedback you have saved to the database.</p></div>
+                        <button class="button button-primary" type="button" data-go="feedback"><span aria-hidden="true">＋</span> New feedback</button>
+                    </div>
+                    <section class="panel report-panel">
+                            <div class="panel-heading"><div><h2>Your submissions</h2><p class="muted">Ratings and comments from your saved feedback</p></div><span id="report-count" class="count-pill">0 entries</span></div>
+                        <div class="table-wrap"><table><thead><tr><th>SUBMITTED</th><th>FACULTY</th><th>TEACHING</th><th>COMMUNICATION</th><th>PUNCTUALITY</th><th>OVERALL</th><th>COMMENTS</th></tr></thead><tbody id="report-body"></tbody></table></div>
+                        <div id="empty-report" class="empty-state" hidden><span aria-hidden="true">▤</span><strong>No feedback yet</strong><p>Your submitted feedback will appear here.</p><button class="button button-outline" type="button" data-go="feedback">Submit feedback</button></div>
+                    </section>
+                    <p class="preview-footnote">Reports are loaded from your saved submissions in the database.</p>
+                </section>
+            </main>
+
+            <footer class="app-footer"><span>CampusVoice <span aria-hidden="true">·</span> Student Feedback Portal</span><span>Connected to the Java feedback service</span></footer>
+        </div>
+        <div id="sidebar-overlay" class="sidebar-overlay" hidden></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
